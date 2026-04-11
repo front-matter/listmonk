@@ -97,8 +97,8 @@ export default Vue.extend({
             + `    <${'script'} type="module" src="${this.serverConfig.root_url}/public/static/altcha.umd.js" async defer></${'script'}>\n`;
         } else if (this.serverConfig.public_subscription.captcha_provider === 'hcaptcha') {
           h += '\n'
-            + `    <div class="h-captcha" data-sitekey="${this.serverConfig.public_subscription.captcha_key}"></div>\n`
-            + `    <${'script'} src="https://js.hcaptcha.com/1/api.js" async defer></${'script'}>\n`;
+            + `    <div class="cf-turnstile" data-sitekey="${this.serverConfig.public_subscription.captcha_key}"></div>\n`
+            + `    <${'script'} src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></${'script'}>\n`;
         }
       }
 

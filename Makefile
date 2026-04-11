@@ -103,6 +103,12 @@ test:
 .PHONY: dist
 dist: $(STUFFBIN) build build-frontend pack-bin
 
+# Build a Linux/amd64 binary with all assets packed via stuffbin, ready for Docker.
+.PHONY: dist-docker
+dist-docker: $(STUFFBIN) build-frontend
+	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ${BIN} -ldflags="-s -w -X 'main.buildString=${BUILDSTR}' -X 'main.versionString=${VERSION}'" cmd/*.go
+	$(STUFFBIN) -a stuff -in ${BIN} -out ${BIN} ${STATIC}
+
 # pack-releases runns stuffbin packing on the given binary. This is used
 # in the .goreleaser post-build hook.
 .PHONY: pack-bin
