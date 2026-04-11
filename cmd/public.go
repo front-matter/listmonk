@@ -468,6 +468,9 @@ func (a *App) SubscriptionForm(c echo.Context) error {
 		switch a.captcha.GetProvider() {
 		case captcha.ProviderHCaptcha:
 			val = c.FormValue("cf-turnstile-response")
+			if val == "" {
+				val = c.FormValue("h-captcha-response")
+			}
 		case captcha.ProviderAltcha:
 			val = c.FormValue("altcha")
 		default:
