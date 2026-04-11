@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	hCaptchaURL = "https://hcaptcha.com/siteverify"
+	hCaptchaURL = "https://challenges.cloudflare.com/turnstile/v0/siteverify"
 )
 
 type hCaptchaResp struct {

@@ -467,7 +467,7 @@ func (a *App) SubscriptionForm(c echo.Context) error {
 		// Get the appropriate captcha response field based on provider.
 		switch a.captcha.GetProvider() {
 		case captcha.ProviderHCaptcha:
-			val = c.FormValue("h-captcha-response")
+			val = c.FormValue("cf-turnstile-response")
 		case captcha.ProviderAltcha:
 			val = c.FormValue("altcha")
 		default:
